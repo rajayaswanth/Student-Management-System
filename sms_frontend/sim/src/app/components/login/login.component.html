@@ -1,0 +1,16 @@
+<section class="body">
+    <section class="center">
+        <div class="title">
+            <img src="../../../assets/images/logo.jpeg">
+            <p>Login</p>
+        </div>
+        <div class="form" [formGroup]="form">
+            <input type="text" placeholder="Email" formControlName="email" />
+            <input type="password" placeholder="Password" formControlName="password" />
+            <button (click)="login()">Login</button>
+            <div class="form_footer">
+                <p>Are you a new User? <a (click)="register()">Register</a></p>
+            </div>
+        </div>
+    </section>
+</section>

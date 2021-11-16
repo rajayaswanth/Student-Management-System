@@ -1,0 +1,26 @@
+<section class="body">
+    <section class="center">
+        <div class="title">
+            <img src="../../../assets/images/logo.jpeg">
+            <p>Signup</p>
+        </div>
+        <div class="form" [formGroup]="form">
+            <input type="text" placeholder="First Name" formControlName="firstName" />
+            <input type="text" placeholder="Last Name" formControlName="lastName" />
+            <input type="text" placeholder="Email" formControlName="email" />
+            <input type="password" placeholder="Password" formControlName="password" />
+            <input type="text" placeholder="Phone" formControlName="phone" />
+            <input type="text" placeholder="Mobile" formControlName="mobile" />
+            <div class="select_box">
+                <div class="box" [class.active]="type === activeType" *ngFor="let type of userTypes"
+                    (click)="setTypeAsActive(type)">
+                    <a>{{type}}</a>
+                </div>
+            </div>
+            <button (click)="register()">Signup</button>
+            <div class="form_footer">
+                <p>Already have an account? <a (click)="login()">Login</a></p>
+            </div>
+        </div>
+    </section>
+</section>

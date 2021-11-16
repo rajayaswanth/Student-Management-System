@@ -1,0 +1,86 @@
+package com.sms.utils;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sms.dto.requests.UserRequest;
+import com.sms.dto.requests.UserType;
+import com.sms.dto.responses.UserResponse;
+import com.sms.entities.Parent;
+import com.sms.entities.Student;
+import com.sms.entities.Teacher;
+import com.sms.entities.User;
+import com.sms.repositories.UserRepository;
+
+@Service
+public class UserUtilService {
+	
+	@Autowired
+	UserRepository userRepo;
+	
+	public User convertUserRequestToUser(UserRequest req) {
+		User user = new User();
+		user.setEmail(req.getEmail());
+		user.setName(req.getFirstName()+" "+req.getLastName());
+		user.setPassword(req.getPassword());
+		if(req.getUserType().equalsIgnoreCase("student"))
+			user.setUserType(UserType.STUDENT);
+		else if(req.getUserType().equalsIgnoreCase("parent"))
+			user.setUserType(UserType.PARENT);
+		else if(req.getUserType().equalsIgnoreCase("teacher"))
+			user.setUserType(UserType.TEACHER);
+		return user;
+	}
+	
+	public Student convertUserRequestToStudent(UserRequest req, User user) {
+		Student stu = new Student();
+		stu.setDob(req.getDob());
+		stu.setDoj(req.getDoj());
+		stu.setFirstName(req.getFirstName());
+		stu.setLastName(req.getLastName());
+		stu.setMobile(req.getMobile());
+		stu.setPhone(req.getPhone());
+		stu.setParent(req.getParent());
+		stu.setUser(user);
+		return stu;
+	}
+	
+	public Teacher convertUserRequestToTeacher(UserRequest req, User user) {
+		Teacher tea = new Teacher();
+		tea.setDob(req.getDob());
+		tea.setFirstName(req.getFirstName());
+		tea.setLastName(req.getLastName());
+		tea.setMobile(req.getMobile());
+		tea.setPhone(req.getPhone());
+		tea.setUser(user);
+		return tea;
+	}
+	
+	public Parent convertUserRequestToParent(UserRequest req, User user) {
+		Parent par = new Parent();
+		par.setDob(req.getDob());
+		par.setFirstName(req.getFirstName());
+		par.setLastName(req.getLastName());
+		par.setMobile(req.getMobile());
+		par.setPhone(req.getPhone());
+		par.setUser(user);
+		return par;
+	}
+
+	public UserResponse convertUserToUserResponse(User user) {
+		UserResponse res = new UserResponse();
+		res.setId(user.getId());
+		res.setName(user.getName());
+		res.setEmail(user.getEmail());
+		res.setUserType(user.getUserType().userType);
+		return res;
+	}
+	
+	public boolean userWithEmailExists(String email) {
+		if(userRepo.findByEmail(email) != null) {
+			return true;
+		}
+		else return false;
+	}
+	
+}
