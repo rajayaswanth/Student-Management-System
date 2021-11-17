@@ -22,4 +22,4 @@
  - Chrome Browser
 
 ## Database Design
-![Database Desing](https://github.com/rajayaswanth/School-Management-System/blob/main/SMS.PNG)
+![Database Desing](https://github.com/rajayaswanth/Student-Management-System/blob/master/SMS.PNG)
