@@ -44,6 +44,6 @@ public class StudentController {
 	
 	@DeleteMapping("/student/{id}")
 	ResponseEntity<ResponseDTO> deleteStudentById(@PathVariable Integer id) {
-		return studentService.getStudentById(id);
+		return studentService.deleteStudentById(id);
 	}
 }

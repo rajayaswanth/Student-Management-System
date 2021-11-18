@@ -15,6 +15,8 @@ public class StudentResponse implements Serializable{
 
 	private static final long serialVersionUID = 9053495632076534023L;
 	
+	private Integer id;
+	
 	private String firstName;
 
 	private String lastName;
@@ -26,24 +28,11 @@ public class StudentResponse implements Serializable{
 	
 	private String mobile;
 	
-	private Parent parent;
-	
-	private List<Attendance> attendance;
-	
-	private List<ExamResult> examResult;
-	
-	private List<ClassroomStudent> classRoomStudent;
 	
 	private Date doj;
 	
 	private Boolean status;
 	
-	private Date lastLoginDate;
-	
-	private String lastLoginIp;
-	
-	private User user;
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -84,38 +73,6 @@ public class StudentResponse implements Serializable{
 		this.mobile = mobile;
 	}
 
-	public Parent getParent() {
-		return parent;
-	}
-
-	public void setParent(Parent parent) {
-		this.parent = parent;
-	}
-
-	public List<Attendance> getAttendance() {
-		return attendance;
-	}
-
-	public void setAttendance(List<Attendance> attendance) {
-		this.attendance = attendance;
-	}
-
-	public List<ExamResult> getExamResult() {
-		return examResult;
-	}
-
-	public void setExamResult(List<ExamResult> examResult) {
-		this.examResult = examResult;
-	}
-
-	public List<ClassroomStudent> getClassRoomStudent() {
-		return classRoomStudent;
-	}
-
-	public void setClassRoomStudent(List<ClassroomStudent> classRoomStudent) {
-		this.classRoomStudent = classRoomStudent;
-	}
-
 	public Date getDoj() {
 		return doj;
 	}
@@ -131,30 +88,4 @@ public class StudentResponse implements Serializable{
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	public Date getLastLoginDate() {
-		return lastLoginDate;
-	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
-
-	public String getLastLoginIp() {
-		return lastLoginIp;
-	}
-
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	
 }

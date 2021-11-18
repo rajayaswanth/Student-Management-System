@@ -29,16 +29,7 @@ public class TeacherRequest  implements Serializable {
 	private String mobile;
 	
 	private Boolean status;
-	
-	@NotNull(message = "Last Login Date can't be null")
-	@NotBlank(message = "Last Login Date can't be blank")
-	private Date lastLoginDate;
-	
-	@NotNull(message = "Last Login Ip can't be null")
-	@NotBlank(message = "Last Login IP can't be blank")
-	private String lastLoginIp;
 
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -87,21 +78,6 @@ public class TeacherRequest  implements Serializable {
 		this.status = status;
 	}
 
-	public Date getLastLoginDate() {
-		return lastLoginDate;
-	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
-
-	public String getLastLoginIp() {
-		return lastLoginIp;
-	}
-
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
-	}
 	
 	
 	

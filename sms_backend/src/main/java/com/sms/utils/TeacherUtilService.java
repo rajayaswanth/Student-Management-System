@@ -27,8 +27,6 @@ public class TeacherUtilService {
 		teacher.setMobile(teacherRequest.getMobile());
 		teacher.setPhone(teacherRequest.getPhone());
 		teacher.setStatus(teacherRequest.getStatus());
-		teacher.setLastLoginDate(teacherRequest.getLastLoginDate());
-		teacher.setLastLoginIp(teacherRequest.getLastLoginIp());
 		return teacher;
 	}
 	
@@ -40,8 +38,6 @@ public class TeacherUtilService {
 		response.setMobile(teacher.getMobile());
 		response.setPhone(teacher.getPhone());
 		response.setStatus(teacher.getStatus());
-		response.setLastLoginDate(teacher.getLastLoginDate());
-		response.setLastLoginIp(teacher.getLastLoginIp());
 		return response;
 	}
 	
@@ -77,16 +73,6 @@ public class TeacherUtilService {
 			}
 		}
 		
-		if(teacherUpdateRequest.getLastLoginDate() != null) {
-			if(!teacherUpdateRequest.getLastLoginDate().equals(teacher.getLastLoginDate())) {
-				teacher.setLastLoginDate(teacherUpdateRequest.getLastLoginDate());
-			}
-		}
-		if(teacherUpdateRequest.getLastLoginIp() != null && teacherUpdateRequest.getLastLoginIp().isEmpty()) {
-			if(!teacherUpdateRequest.getLastLoginIp().equals(teacher.getLastLoginIp())) {
-				teacher.setLastLoginIp(teacherUpdateRequest.getLastLoginIp());
-			}
-		}
 		response.put(true, teacher);
 		return response;
 	}

@@ -25,14 +25,7 @@ public class StudentUtilService {
 		student.setMobile(req.getMobile());
 		student.setPhone(req.getPhone());
 		student.setStatus(true);
-		student.setAttendance(req.getAttendance());
-		student.setClassRoomStudent(req.getClassRoomStudent());
 		student.setDoj(req.getDoj());
-		student.setExamResult(req.getExamResult());
-		student.setParent(req.getParent());
-		student.setUser(req.getUser());
-		student.setLastLoginDate(req.getLastLoginDate());
-		student.setLastLoginIp(req.getLastLoginIp());
 		return student;
 		 
 	}
@@ -45,14 +38,7 @@ public class StudentUtilService {
 		response.setMobile(response.getMobile());
 		response.setPhone(response.getPhone());
 		response.setStatus(true);
-		response.setAttendance(response.getAttendance());
-		response.setClassRoomStudent(response.getClassRoomStudent());
 		response.setDoj(response.getDoj());
-		response.setExamResult(response.getExamResult());
-		response.setParent(response.getParent());
-		response.setUser(response.getUser());
-		response.setLastLoginDate(response.getLastLoginDate());
-		response.setLastLoginIp(response.getLastLoginIp());
 		return response;
 	}
 	
@@ -92,37 +78,6 @@ public class StudentUtilService {
 			}
 		}
 		
-		if(req.getAttendance() != null && !req.getAttendance().isEmpty()) {
-			if(!req.getAttendance().equals(student.getAttendance())) {
-				student.setAttendance(req.getAttendance());
-			}
-		}
-		if(req.getClassRoomStudent() != null && req.getClassRoomStudent().isEmpty())
-		{
-			if(!req.getClassRoomStudent().equals(student.getClassRoomStudent())) {
-				student.setClassRoomStudent(req.getClassRoomStudent());
-			}
-		}
-		if(req.getExamResult() != null && req.getExamResult().isEmpty()) {
-			if(!req.getExamResult().equals(student.getExamResult())) {
-				student.setExamResult(req.getExamResult());
-			}
-		}
-		if(req.getUser() != null) {
-			if(!req.getUser().equals(student.getUser())) {
-				student.setUser(req.getUser());
-			}
-		}
-		if(req.getLastLoginDate() != null) {
-			if(!req.getLastLoginDate().equals(student.getLastLoginDate())) {
-				student.setLastLoginDate(req.getLastLoginDate());
-			}
-		}
-		if(req.getLastLoginIp() != null && req.getLastLoginIp().isEmpty()) {
-			if(!req.getLastLoginIp().equals(student.getLastLoginIp())) {
-				student.setLastLoginIp(req.getLastLoginIp());
-			}
-		}
 		response.put(true, student);
 		return response;
 	}
