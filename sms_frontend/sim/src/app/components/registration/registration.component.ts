@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration/registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private router: Router) { }
+  constructor(private fb:FormBuilder, private router: Router, private registerService: RegistrationService) { }
 
   activeType = 'Parent';
 
@@ -42,6 +43,11 @@ export class RegistrationComponent implements OnInit {
   register() {
     this.form.get("userType")?.setValue(this.activeType)
     console.log(this.form.value)
+    this.registerService.createUser(this.form.value).subscribe((data: any) => {
+      console.log(data)
+      this.router.navigate([""]);
+    },
+    error => alert("Unable to create"));
   }
 
 }

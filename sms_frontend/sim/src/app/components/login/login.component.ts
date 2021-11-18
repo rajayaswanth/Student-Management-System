@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +10,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private router: Router) { }
+  constructor(private fb:FormBuilder, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
   public form= this.fb.group({
-    email:[null, Validators.required],
+    username:[null, Validators.required],
     password:[null, Validators.required]
   });
 
   login() {
     console.log(this.form.value)
+    this.loginService.authenticate(this.form.value).subscribe((data: any) => {
+      localStorage.setItem("token",data.token);
+    },
+    error => alert("UnAuthorized"));
   }
 
   register() {
