@@ -1,7 +1,6 @@
 package com.sms.controllers;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
@@ -20,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sms.customannotations.CurrentUser;
 import com.sms.dto.requests.Email;
 import com.sms.dto.requests.UserRequest;
 import com.sms.dto.responses.ResponseDTO;
+import com.sms.dto.responses.UserResponse;
 import com.sms.entities.User;
 import com.sms.repositories.UserRepository;
 import com.sms.services.EmailService;
@@ -86,9 +87,20 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping(value = "/getAll")
-	public List<User> getUsers() {
+	public ResponseEntity<ResponseDTO> getUsers() {
 		LOG.log(Level.INFO, "Get all Users api is called...");
-		return userRepo.findAll();
+		return userService.getAllUsers();
+	}
+	
+	/**
+	 * Get user by ID
+	 * @param id
+	 * @return
+	 */
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<ResponseDTO> getUser(@PathVariable Long id) {
+		LOG.log(Level.INFO, "Get User api is called...");
+		return userService.getUserById(id);
 	}
 	
 	/**
@@ -97,10 +109,14 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping(value = "/delete/{id}")
-	public String deleteUser(@PathVariable Long id) {
+	public ResponseEntity<ResponseDTO> deleteUser(@PathVariable Long id) {
 		LOG.log(Level.INFO, "Delete User api is called...");
-		userRepo.deleteById(id);
-		return "deleted successfully";
+		return userService.deleteUserById(id);
+	}
+	
+	@GetMapping(value = "/getLoggedInUser")
+	public ResponseEntity<ResponseDTO> getLoggedInUser(@CurrentUser UserResponse user) {
+		return userService.getLoggedInUser(user);
 	}
 
 }
