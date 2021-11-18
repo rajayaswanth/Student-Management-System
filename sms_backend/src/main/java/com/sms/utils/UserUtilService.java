@@ -1,10 +1,15 @@
 package com.sms.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.dto.requests.UserRequest;
 import com.sms.dto.requests.UserType;
+import com.sms.dto.requests.UserUpdateRequest;
 import com.sms.dto.responses.UserResponse;
 import com.sms.entities.Parent;
 import com.sms.entities.Student;
@@ -81,6 +86,32 @@ public class UserUtilService {
 			return true;
 		}
 		else return false;
+	}
+	
+	public Optional<User> isUserWithIdExists(Long id) {
+		return userRepo.findById(id);
+	}
+	
+	public Map<Boolean, User> canUpdate(UserUpdateRequest req, User user) {
+		Map<Boolean, User> response = new HashMap<>();
+		if(req.getFirstName() != null && !req.getFirstName().isEmpty() && req.getLastName() != null && !req.getLastName().isEmpty()) {
+			String name = req.getFirstName() + " " + req.getLastName();
+			if(!req.getFirstName().equalsIgnoreCase(name)) {
+				user.setName(name);
+			}
+		}
+		if(req.getEmail() != null && !req.getEmail().isEmpty()) {
+			if(!req.getEmail().equals(user.getEmail())) {
+				user.setEmail(null);
+			}
+		}
+		if(req.getPassword() != null && !req.getPassword().isEmpty()) {
+			if(!req.getPassword().equals(user.getPassword())) {
+				user.setPassword(req.getPassword());
+			}
+		}
+		response.put(true, user);
+		return response;
 	}
 	
 }

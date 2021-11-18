@@ -1,5 +1,9 @@
 package com.sms.services.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.sms.dto.requests.UserRequest;
 import com.sms.dto.requests.UserType;
 import com.sms.dto.responses.ResponseDTO;
+import com.sms.dto.responses.UserResponse;
 import com.sms.entities.User;
 import com.sms.repositories.ParentRepository;
 import com.sms.repositories.StudentRepository;
@@ -54,6 +59,45 @@ public class UserServiceImpl implements UserService {
 		else if(user.getUserType().equals(UserType.PARENT))
 			parentRepo.save(userUtil.convertUserRequestToParent(userRequest, user));
 		return utilService.successResponse("Created Successfully", userUtil.convertUserToUserResponse(user), null);
+	}
+
+	@Override
+	public ResponseEntity<ResponseDTO> updateUser(UserRequest userRequest, Long id) {
+		Optional<User> user = userUtil.isUserWithIdExists(id);
+		if(user.isPresent()) {
+			return utilService.successResponse(null, userUtil.convertUserToUserResponse(user.get()), null);
+		} else {
+			return utilService.errorResponse("Parent with Id - " + id +" doesn't exist", null, HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@Override
+	public ResponseEntity<ResponseDTO> getAllUsers() {
+		List<User> users = userRepo.findAll();
+		List<UserResponse> response = new ArrayList<>();
+		users.stream().forEach(u -> {
+			UserResponse r = userUtil.convertUserToUserResponse(u);
+			response.add(r);
+		});
+		return utilService.successResponse("Success", response, null);
+	}
+
+	@Override
+	public ResponseEntity<ResponseDTO> getUserById(Long id) {
+		User user = userRepo.getById(id);
+		UserResponse response = userUtil.convertUserToUserResponse(user);
+		return utilService.successResponse("Success", response, null);
+	}
+
+	@Override
+	public ResponseEntity<ResponseDTO> deleteUserById(Long id) {
+		userRepo.deleteById(id);
+		return utilService.successResponse("Success", "deleted successfully", null);
+	}
+
+	@Override
+	public ResponseEntity<ResponseDTO> getLoggedInUser(UserResponse user) {
+		return utilService.successResponse("Success", user, null);
 	}
 
 }

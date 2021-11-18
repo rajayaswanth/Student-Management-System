@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sms.dto.requests.StudentRequest;
 import com.sms.dto.requests.StudentUpdateRequest;
@@ -12,6 +13,7 @@ import com.sms.dto.responses.StudentResponse;
 import com.sms.entities.Student;
 import com.sms.repositories.StudentRepository;
 
+@Service
 public class StudentUtilService {
 	
 	@Autowired
