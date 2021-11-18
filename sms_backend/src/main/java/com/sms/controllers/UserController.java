@@ -1,6 +1,8 @@
 package com.sms.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,6 +62,9 @@ public class UserController {
 		email.setFrom(from);
 		email.setSubject("Registration");
 		email.setTo(from);
+		Map<String, Object> props = new HashMap<String, Object>();
+		props.put("name", userRequest.getFirstName() + " " + userRequest.getLastName());
+		email.setProps(props);
 		CompletableFuture.runAsync(() ->emailService.sendEmail(email, "Registration"));
 		return response;
 	}
