@@ -3,33 +3,26 @@ package com.sms.dto.requests;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-public class TeacherRequest  implements Serializable {
+public class StudentUpdateRequest implements Serializable{
 	
-	private static final long serialVersionUID = 5050422623378846585L;
+	
+	private static final long serialVersionUID = 3337880934364582027L;
 
-		
-	@NotNull(message= "Frist Name can't be null")
-	@NotBlank(message = "Frist Name can't be blank")
 	private String firstName;
-	
-	@NotNull(message = "Last Name can't be null")
-	@NotBlank(message = "Last Name can't be blank")
+
 	private String lastName;
 	
-	@NotNull(message = "dob can't be null")
 	private Date dob;
 	
 	private String phone;
 	
-	@NotNull(message = "Mobile can't be null")
-	@NotBlank(message = "Mobile can't be blank")
 	private String mobile;
 	
+	
+	private Date doj;
+	
 	private Boolean status;
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -70,6 +63,14 @@ public class TeacherRequest  implements Serializable {
 		this.mobile = mobile;
 	}
 
+	public Date getDoj() {
+		return doj;
+	}
+
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
+
 	public Boolean getStatus() {
 		return status;
 	}
@@ -78,7 +79,5 @@ public class TeacherRequest  implements Serializable {
 		this.status = status;
 	}
 
-	
-	
 	
 }

@@ -6,17 +6,17 @@ import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class TeacherRequest  implements Serializable {
-	
-	private static final long serialVersionUID = 5050422623378846585L;
+public class StudentRequest implements Serializable {
 
-		
-	@NotNull(message= "Frist Name can't be null")
-	@NotBlank(message = "Frist Name can't be blank")
-	private String firstName;
 	
-	@NotNull(message = "Last Name can't be null")
-	@NotBlank(message = "Last Name can't be blank")
+	private static final long serialVersionUID = -833925090986331073L;
+
+	@NotNull(message = "FirstName can't be null")
+	@NotBlank(message = "FirstName can't be blank")
+	private String firstName;
+
+	@NotNull(message = "LastName can't be null")
+	@NotBlank(message = "LastName can't be blank")
 	private String lastName;
 	
 	@NotNull(message = "dob can't be null")
@@ -28,8 +28,12 @@ public class TeacherRequest  implements Serializable {
 	@NotBlank(message = "Mobile can't be blank")
 	private String mobile;
 	
+	
+	@NotNull(message = "DateOfJoin can't be null")
+	private Date doj;
+	
 	private Boolean status;
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -70,6 +74,14 @@ public class TeacherRequest  implements Serializable {
 		this.mobile = mobile;
 	}
 
+	public Date getDoj() {
+		return doj;
+	}
+
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
+
 	public Boolean getStatus() {
 		return status;
 	}
@@ -77,8 +89,4 @@ public class TeacherRequest  implements Serializable {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	
-	
-	
 }

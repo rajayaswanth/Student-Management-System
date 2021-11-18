@@ -1,35 +1,38 @@
-package com.sms.dto.requests;
+package com.sms.dto.responses;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.sms.entities.Attendance;
+import com.sms.entities.ClassroomStudent;
+import com.sms.entities.ExamResult;
+import com.sms.entities.Parent;
+import com.sms.entities.User;
 
-public class TeacherRequest  implements Serializable {
+public class StudentResponse implements Serializable{
+
+	private static final long serialVersionUID = 9053495632076534023L;
 	
-	private static final long serialVersionUID = 5050422623378846585L;
-
-		
-	@NotNull(message= "Frist Name can't be null")
-	@NotBlank(message = "Frist Name can't be blank")
+	private Integer id;
+	
 	private String firstName;
-	
-	@NotNull(message = "Last Name can't be null")
-	@NotBlank(message = "Last Name can't be blank")
+
 	private String lastName;
 	
-	@NotNull(message = "dob can't be null")
 	private Date dob;
 	
+	@JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_NULL)
 	private String phone;
 	
-	@NotNull(message = "Mobile can't be null")
-	@NotBlank(message = "Mobile can't be blank")
 	private String mobile;
 	
+	
+	private Date doj;
+	
 	private Boolean status;
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -70,6 +73,14 @@ public class TeacherRequest  implements Serializable {
 		this.mobile = mobile;
 	}
 
+	public Date getDoj() {
+		return doj;
+	}
+
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
+
 	public Boolean getStatus() {
 		return status;
 	}
@@ -77,8 +88,4 @@ public class TeacherRequest  implements Serializable {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	
-	
-	
 }

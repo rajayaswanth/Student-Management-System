@@ -19,9 +19,6 @@ public class TeacherUpdateRequest implements Serializable {
 	
 	private Boolean status;
 	
-	private Date lastLoginDate;
-	
-	private String lastLoginIp;
 
 	public String getFirstName() {
 		return firstName;
@@ -70,22 +67,5 @@ public class TeacherUpdateRequest implements Serializable {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	public Date getLastLoginDate() {
-		return lastLoginDate;
-	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
-
-	public String getLastLoginIp() {
-		return lastLoginIp;
-	}
-
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
-	}
-
 	
 }
