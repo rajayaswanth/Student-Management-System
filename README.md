@@ -13,6 +13,9 @@
  - Mockito
  - Sonarqube ( Code Quality )
  - Swagger ( Api Documentation )
+ - Sleuth
+ - Acutator(Metrics & health check URL configuration)
+ - Profiles(Dev, QA,Prod)
 
 ## Tools Used
 
