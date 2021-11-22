@@ -1,0 +1,43 @@
+<section class="body">
+    <section class="nav">
+        <section class="nav-left">
+            <img src="../../../assets/images/logo.jpeg"/>
+        </section>
+        <section class="nav-right">
+            <p [class.active]="activeNav === 'student'" (click)="changeNav('student')" class="text">Student</p>
+            <p [class.active]="activeNav === 'parent'" (click)="changeNav('parent')" class="text">Parent</p>
+            <p [class.active]="activeNav === 'teacher'" (click)="changeNav('teacher')" class="text">Teacher</p>
+            <section (click)="changeNav('about')" class="profile_pic">
+                <p class="profile_name">Y</p>
+            </section>
+        </section>
+    </section>
+    <section class="content">
+        <app-student *ngIf="activeNav === 'student'"></app-student>
+        <app-parent *ngIf="activeNav === 'parent'"></app-parent>
+        <app-teacher *ngIf="activeNav === 'teacher'"></app-teacher>
+        <section class="body-content" *ngIf="activeNav === 'about'">
+            <section class="content-left">
+                <!-- <input class="file" type="file" accept="image/*" (change)="fileData($event)" #file> -->
+                <!-- <div *ngIf="!showImage" class="image" (click)="file.click()"> -->
+                <input class="file" type="file" accept="image/*" #file>
+                <div class="image" (click)="file.click()">
+                    <p>Click in the box to upload.</p>
+                </div>
+                <!-- <div *ngIf="showImage" class="image" (click)="file.click()">
+                    <img src="{{path}}"/>
+                </div> -->
+            </section>
+            <section class="content-right">
+                <p>First Name : {{person.firstName}}</p>
+                <p>Last Name : {{person.lastName}}</p>
+                <p>Email : {{person.email}}</p>
+                <p>DOB : {{person.dob | date:'fullDate'}}</p>
+                <p>Phone : {{person.phone}}</p>
+                <p>Mobile : {{person.mobile}}</p>
+                <p>DOJ : {{person.doj | date:'fullDate'}}</p>
+                <button (click)="logout()">Logout</button>
+            </section>
+        </section>
+    </section>
+</section>

@@ -13,6 +13,8 @@ public class UserResponse implements Serializable {
 	private String email;
 
 	private String userType;
+	
+	private Object user;
 
 	public Long getId() {
 		return id;
@@ -44,6 +46,14 @@ public class UserResponse implements Serializable {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public Object getUser() {
+		return user;
+	}
+
+	public void setUser(Object user) {
+		this.user = user;
 	}
 	
 }

@@ -7,5 +7,7 @@ import com.sms.entities.Parent;
 
 @Repository
 public interface ParentRepository extends JpaRepository<Parent, Integer> {
+	
+	Parent findByUserId(Long id);
 
 }

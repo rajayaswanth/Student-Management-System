@@ -8,12 +8,20 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
+import { StudentComponent } from './components/student/student.component';
+import { ParentComponent } from './components/parent/parent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    TeacherComponent,
+    StudentComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,

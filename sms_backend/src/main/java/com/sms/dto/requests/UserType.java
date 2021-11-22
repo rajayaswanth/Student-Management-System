@@ -4,7 +4,8 @@ public enum UserType {
 	
 	STUDENT("Student"),
     TEACHER("Teacher"),
-    PARENT("Parent");
+    PARENT("Parent"),
+    ADMIN("Admin");
 
     public final String userType;
 

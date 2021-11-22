@@ -29,24 +29,24 @@ public class StudentUtilService {
 		student.setStatus(true);
 		student.setDoj(req.getDoj());
 		return student;
-		 
 	}
 	
 	public StudentResponse convertStudentObjectToStudentRes(Student student) {
-		StudentResponse  response = new StudentResponse();
-		response.setDob(response.getDob());
-		response.setFirstName(response.getFirstName());
-		response.setLastName(response.getLastName());
-		response.setMobile(response.getMobile());
-		response.setPhone(response.getPhone());
+		StudentResponse response = new StudentResponse();
+		response.setDob(student.getDob());
+		response.setFirstName(student.getFirstName());
+		response.setLastName(student.getLastName());
+		response.setMobile(student.getMobile());
+		response.setPhone(student.getPhone());
 		response.setStatus(true);
-		response.setDoj(response.getDoj());
+		response.setDoj(student.getDoj());
 		return response;
 	}
 	
 	public Optional<Student> isStudentWithIdExists(Integer id){
 		return studentRepository.findById(id);
 	}
+	
 	public Map<Boolean, Student> canUpdate(StudentUpdateRequest req, Student student) {
 		Map<Boolean, Student> response = new HashMap<>();
 		if(req.getFirstName() != null && !req.getFirstName().isEmpty()) {
