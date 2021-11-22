@@ -4,15 +4,15 @@ import java.util.Map;
 
 public class Email {
 	
-	String to;
+	private String to;
 	
-    String from;
+	private String from;
     
-    String subject;
+	private String subject;
     
-    String content;
-    
-    private Map<String, Object> props;
+	private String content;
+	
+	private Map<String, Object> props;
 
 	public String getTo() {
 		return to;

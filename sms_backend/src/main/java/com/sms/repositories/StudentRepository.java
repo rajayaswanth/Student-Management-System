@@ -8,4 +8,6 @@ import com.sms.entities.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
+	Student findByUserId(Long id);
+
 }
